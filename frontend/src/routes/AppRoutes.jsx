@@ -5,15 +5,18 @@ import Transactions from '../views/Transactions';
 import Activities from '../views/Activities';
 import BankAccounts from '../views/BankAccounts';
 import Partners from '../views/Partners';
+import Login from '../views/Login';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/transactions" element={<Transactions />} />
-      <Route path="/activities" element={<Activities />} />
-      <Route path="/bank-accounts" element={<BankAccounts />} />
-      <Route path="/partners" element={<Partners />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/transactions" element={<ProtectedRoute><Transactions /></ProtectedRoute>} />
+      <Route path="/activities" element={<ProtectedRoute><Activities /></ProtectedRoute>} />
+      <Route path="/bank-accounts" element={<ProtectedRoute><BankAccounts /></ProtectedRoute>} />
+      <Route path="/partners" element={<ProtectedRoute><Partners /></ProtectedRoute>} />
     </Routes>
   );
 };

@@ -1,6 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { MdDashboard, MdListAlt, MdAccountBalance, MdGroup } from 'react-icons/md';
+import { MdDashboard, MdListAlt, MdAccountBalance, MdGroup, MdLogout } from 'react-icons/md';
+
+const handleLogout = () => {
+  localStorage.removeItem('auth_token');
+  localStorage.removeItem('auth_user');
+  window.location.href = '/login';
+};
 
 const Sidebar = () => {
   return (
@@ -12,7 +18,7 @@ const Sidebar = () => {
           <p>Ventas y Gastos</p>
         </div>
         <nav className="sidebar-nav">
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             <MdDashboard /> Dashboard
           </NavLink>
           <NavLink to="/transactions" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
@@ -28,6 +34,29 @@ const Sidebar = () => {
             <MdGroup /> Socios
           </NavLink>
         </nav>
+
+        <div style={{ marginTop: 'auto', padding: '1rem' }}>
+          <button
+            onClick={handleLogout}
+            style={{
+              width: '100%',
+              padding: '0.6rem 1rem',
+              background: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: '8px',
+              color: '#f87171',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              transition: 'all 0.3s'
+            }}
+          >
+            <MdLogout /> Cerrar sesión
+          </button>
+        </div>
       </aside>
 
       {/* Barra de navegación inferior para móvil */}
@@ -52,6 +81,25 @@ const Sidebar = () => {
           <MdGroup className="mobile-nav-icon" />
           <span>Socios</span>
         </NavLink>
+        <button
+          onClick={handleLogout}
+          className="mobile-nav-item"
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#f87171',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '2px',
+            fontSize: 'inherit',
+            padding: '0.25rem'
+          }}
+        >
+          <MdLogout className="mobile-nav-icon" style={{ color: '#f87171' }} />
+          <span style={{ fontSize: '0.65rem' }}>Salir</span>
+        </button>
       </nav>
     </>
   );
