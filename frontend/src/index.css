@@ -1302,3 +1302,269 @@ input:focus, select:focus {
   text-align: center;
   padding: 1rem 0;
 }
+
+/* =============================================
+   RESPONSIVE MÓVIL - Media Queries
+   ============================================= */
+
+/* Barra de navegación inferior para móvil */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* Layout principal */
+  .app-container {
+    flex-direction: column;
+  }
+
+  /* Ocultar sidebar de escritorio */
+  .sidebar {
+    display: none;
+  }
+
+  /* Mostrar barra inferior */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 0.5rem 0;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .mobile-nav-item.active {
+    color: var(--primary-color);
+  }
+
+  .mobile-nav-icon {
+    font-size: 1.3rem;
+  }
+
+  /* Contenido principal */
+  .main-content {
+    padding: 1rem;
+    padding-bottom: 5rem; /* Espacio para la barra inferior */
+    overflow-y: auto;
+  }
+
+  /* Headers de página */
+  .page-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .d-flex-between {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .d-flex-between .btn-primary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Tarjetas de resumen del Dashboard */
+  .summary-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .summary-cards .amount {
+    font-size: 1.3rem;
+  }
+
+  /* Grid del dashboard */
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Tabla de transacciones: convertir a tarjetas */
+  .txn-table-wrapper {
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .txn-table thead {
+    display: none;
+  }
+
+  .txn-table,
+  .txn-table tbody,
+  .txn-table tr,
+  .txn-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .txn-table tr.txn-row {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    position: relative;
+  }
+
+  .txn-table td {
+    padding: 0.2rem 0;
+    border: none;
+    text-align: left !important;
+  }
+
+  /* Ocultar columnas menos importantes en móvil */
+  .txn-table td:nth-child(4), /* Categoría */
+  .txn-table td:nth-child(5)  /* Actividad */
+  {
+    display: none;
+  }
+
+  /* Monto destacado en la parte superior derecha */
+  .txn-table td:nth-child(8) {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    text-align: right !important;
+  }
+
+  /* Acciones en la parte inferior derecha */
+  .txn-table td:nth-child(9) {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+  }
+
+  /* Filtros de transacciones */
+  .txn-filters-inner {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100%;
+  }
+
+  /* Stats bar */
+  .txn-stats-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Formulario modal */
+  .modal-content {
+    margin: 0.5rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  /* Paginación en móvil */
+  .txn-pagination {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .page-numbers {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .page-btn-nav {
+    flex: 1;
+    max-width: 120px;
+  }
+
+  /* Socios y Bancos: grillas */
+  .partners-grid,
+  .bank-accounts-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Vista previa de imagen */
+  .image-preview-modal {
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+
+  /* Actividades */
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Formularios internos */
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  /* Botones full width en móvil */
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Card del banco en Dashboard */
+  .bank-balance-list {
+    gap: 0.5rem;
+  }
+
+  .bank-balance-item {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}
+
+/* Para pantallas muy pequeñas (iPhone SE, etc.) */
+@media (max-width: 380px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-cards .amount {
+    font-size: 1.5rem;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+    padding-bottom: 5rem;
+  }
+}
+
