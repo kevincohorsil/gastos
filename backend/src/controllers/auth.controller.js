@@ -19,7 +19,8 @@ class AuthController {
       );
       res.json({ success: true, message: 'Login exitoso', data: { token, username } });
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Error del servidor', data: null });
+      console.error('AUTH ERROR:', error.message);
+      res.status(500).json({ success: false, message: 'Error del servidor: ' + error.message, data: null });
     }
   }
 }
